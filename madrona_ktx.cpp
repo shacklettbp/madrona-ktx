@@ -1,9 +1,6 @@
 #include "madrona_ktx.h"
 
-void loadKTXFile(std::string filename) {
-
-}
-void loadKTXMem(void * pixelData, size_t bufferSize, ConvertedOutput* out) {
+void loadKTXMem(void *pixelData, size_t bufferSize, ConvertedOutput* out) {
     ktxTexture *ktexture;
     KTX_error_code result;
     ktx_size_t offset;
@@ -16,7 +13,6 @@ void loadKTXMem(void * pixelData, size_t bufferSize, ConvertedOutput* out) {
     convertKTXTexture(ktexture,BC7, out);
 
     ktxTexture_Destroy(ktexture);
-    delete pixelData;
 }
 void convertKTXTexture(ktxTexture *tex, OutputFormat format, ConvertedOutput* out){
     if (tex->classId == ktxTexture2_c) {
@@ -40,5 +36,5 @@ void convertKTXTexture(ktxTexture *tex, OutputFormat format, ConvertedOutput* ou
     out->texture_data = pixel_data;
     out->width = width;
     out->height = height;
-    out->pixelDataSize = pixel_data_size;
+    out->bufferSize = tex_size;
 }

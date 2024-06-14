@@ -11,7 +11,7 @@ struct ConvertedOutput {
     void *texture_data;
     int width;
     int height;
-    int pixelDataSize;
+    size_t bufferSize;
 };
 
 enum OutputFormat{
