@@ -1,25 +1,23 @@
 #ifndef MADRONA_KTX_MADRONA_KTX_H
 #define MADRONA_KTX_MADRONA_KTX_H
 
-//#define KHRONOS_STATIC
-//#include "external/KTX-Software/include/ktx.h"
 #include <ktx.h>
 #include <string>
 #include <span>
 
+namespace ktx {
+
 struct ConvertedOutput {
-    void *texture_data;
+    void *textureData;
     int width;
     int height;
     size_t bufferSize;
 };
 
-enum OutputFormat{
-    BC7 = KTX_TTF_BC7_RGBA
-};
+void loadKTXMem(void * pixel_data,
+                size_t buffer_size,
+                ConvertedOutput* out);
 
-void load_ktx_texture(std::string filename);
-void loadKTXMem(void * pixelData, size_t bufferSize, ConvertedOutput* out);
-void convertKTXTexture(ktxTexture* tex, OutputFormat format, ConvertedOutput* out);
+}
 
 #endif //MADRONA_KTX_MADRONA_KTX_H
